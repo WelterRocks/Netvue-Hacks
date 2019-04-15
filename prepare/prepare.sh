@@ -46,7 +46,7 @@ fi
 
 if [ "$1" = "--uninstall" ]; then
 	echo -n "Disabling hack loader..."
-	if [ -e `cat /etc/init.d/rcS | grep netvuehack.sh | grep -v "^#" >/dev/null 2>&1 && echo 1` ]; then
+	if [ -e `cat /etc/init.d/rcS | grep netvuehack.sh | grep -v "^#" >/dev/null 2>&1 || echo 1` ]; then
 		cat /etc/init.d/rcS | grep -v netvuehack.sh > /etc/init.d/rcS.new
 		mv /etc/init.d/rcS.new /etc/init.d/rcS >/dev/null 2>&1
 		chmod 755 /etc/init.d/rcS >/dev/null 2>&1
