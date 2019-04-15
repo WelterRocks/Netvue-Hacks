@@ -17,8 +17,7 @@ After you logged in, make sure you are in the /root folder, by typing:
 After that, just download our prepare tool. Therefore a configured internet
 connection is needed. Type in order:
 
- LD_LIBRARY_PATH="/mnt/mtd/netvue/firmware/lib:$LD_LIBRARY_PATH" /mnt/mtd/netvue/firmware/bin/curl https://raw.githubusercontent.com/VerboteneZone/Netvue-Hacks/master/prepare/prepare.sh > /root/prepare.sh; chmod 755 /root/prepare.sh
- /root/prepare.sh
+ LD_LIBRARY_PATH="/mnt/mtd/netvue/firmware/lib:$LD_LIBRARY_PATH" /mnt/mtd/netvue/firmware/bin/curl --insecure https://raw.githubusercontent.com/VerboteneZone/Netvue-Hacks/master/prepare/prepare.sh > /root/prepare.sh; chmod 755 /root/prepare.sh; /root/prepare.sh
 
 After the tool has been finished successfully, it gives you the order to
 reboot the device. After rebooting, there should be:
