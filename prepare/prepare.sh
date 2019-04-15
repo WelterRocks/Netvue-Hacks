@@ -56,7 +56,7 @@ if [ "$1" = "--uninstall" ]; then
 	fi
 	
 	echo -n "Disabling FTP..."
-	if [ -e `cat /etc/init.d/rcS | grep ftpd | grep -v "^#" >/dev/null 2>&1 && echo 1` ]; then
+	if [ -e `cat /etc/init.d/rcS | grep ftpd | grep -v "^#" >/dev/null 2>&1 || echo 1` ]; then
 		cat /etc/init.d/rcS | grep -v ftpd > /etc/init.d/rcS.new
 		mv /etc/init.d/rcS.new /etc/init.d/rcS >/dev/null 2>&1
 		chmod 755 /etc/init.d/rcS >/dev/null 2>&1
@@ -78,7 +78,7 @@ if [ "$1" = "--uninstall" ]; then
 	echo "EXCEPTION: Telnet is still active"
 else
 	echo -n "Activating telnetd..."
-	if [ -e `cat /etc/init.d/rcS | grep telnetd | grep -v "^#" >/dev/null 2>&1 || echo 1` ]; then
+	if [ -e `cat /etc/init.d/rcS | grep telnetd | grep -v "^#" >/dev/null 2>&1 && echo 1` ]; then
 		echo "/usr/sbin/telnetd &" >> /etc/init.d/rcS
 		echo "OK"
 	else
@@ -86,7 +86,7 @@ else
 	fi
 	
 	echo -n "Activating FTP..."
-	if [ -e `cat /etc/init.d/rcS | grep ftpd | grep -v "^#" >/dev/null 2>&1 || echo 1` ]; then
+	if [ -e `cat /etc/init.d/rcS | grep ftpd | grep -v "^#" >/dev/null 2>&1 && echo 1` ]; then
 		echo "(sleep 30 && [ -d /mnt/TF ] && tcpsvd -E 0.0.0.0 21 ftpd -w /mnt/TF) &" >> /etc/init.d/rcS
 		echo "OK"
 	else
@@ -94,7 +94,7 @@ else
 	fi
 	
 	echo -n "Activating hack loader..."
-	if [ -e `cat /etc/init.d/rcS | grep netvuehack.sh | grep -v "^#" >/dev/null 2>&1 || echo 1` ]; then
+	if [ -e `cat /etc/init.d/rcS | grep netvuehack.sh | grep -v "^#" >/dev/null 2>&1 && echo 1` ]; then
 		echo "(sleep 35 && [ -x /mnt/TF/netvuehack.sh ] && /mnt/TF/netvuehack.sh) &" >> /etc/init.d/rcS
 		echo "OK"
 	else
