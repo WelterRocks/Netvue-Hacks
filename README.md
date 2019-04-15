@@ -12,14 +12,13 @@ the reach our freaky goals.
 
 After you logged in, make sure you are in the /root folder, by typing:
 
-; cd /root
+ cd /root
 
 After that, just download our prepare tool. Therefore a configured internet
 connection is needed. Type in order:
 
-; wget https://raw.githubusercontent.com/VerboteneZone/Netvue-Hacks/master/prepare/prepare.sh
-; chmod 755 prepare.sh
-; ./prepare.sh
+ LD_LIBRARY_PATH="/mnt/mtd/netvue/firmware/lib:$LD_LIBRARY_PATH" /mnt/mtd/netvue/firmware/bin/curl https://raw.githubusercontent.com/VerboteneZone/Netvue-Hacks/master/prepare/prepare.sh > /root/prepare.sh; chmod 755 /root/prepare.sh
+ /root/prepare.sh
 
 After the tool has been finished successfully, it gives you the order to
 reboot the device. After rebooting, there should be:
@@ -44,7 +43,7 @@ So, if you take out the sd/tf card, the system is running as it has been
 designed for, except of firmware upgrades and the telnet access. If you
 execute:
 
-; /root/prepare.sh --uninstall
+ /root/prepare.sh --uninstall
 
 the changes by the tool would be reverted. FTP is disabled, netvuehack.sh
 autoexecution is removed and the firmware upgrade process is re-enabled. The
